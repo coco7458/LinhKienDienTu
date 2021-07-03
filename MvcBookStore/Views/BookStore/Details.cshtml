@@ -1,0 +1,53 @@
+﻿@model  MvcBookStore.Models.SanPham
+<style type="text/css">
+    #Datmua a {
+        clear: both;
+        color: white;
+        display: block;
+        padding-top: 10px;
+        background-color: red;
+        width: 120px;
+        height: 35px;
+        float: right;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.5s;
+    }
+
+        #Datmua a:hover {
+            border-color: red;
+            background-color: white;
+            color: red;
+        }
+</style>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@{ 
+    var sp = Model;
+}
+
+<h3>Thông Tin Sản Phẩm</h3>
+<div style="display: flex">
+    <div style="width: 40%; float: left; border-left: dotted 1px; border-color: azure;">
+        <img src="~/Content/Hinhsanpham/@sp.AnhSanPham" alt="" width="100%">
+    </div>
+
+    <div style="width: 100%; float: left; padding: 10px;">
+        <h4 style="font-weight: bold; color: red;"> Tên sản phẩm: @sp.TenSanPham </h4>
+        <p style="text-align: justify;"> <span style="font-weight: bold;">Mô tả: </span>@sp.MoTa</p>
+        <p style="font-weight: bold;">Giá Bán: <span style="font-weight: bold;"> @sp.GiaBan VND</span></p>
+
+        @*======================== button ĐẶT MUA ================================*@
+        <div>
+            <div id="Datmua">
+                <a href="@Url.Action("ThemGioHang","GioHang", new { @iMasach = Model.MaSanPham, @strURL = Request.Url.ToString()})" class="list-group-item">
+                    ĐẶT MUA
+                </a>
+            </div>
+        </div>
+        @* ======================================================== *@
+    </div>
+</div>
